@@ -15,16 +15,16 @@
         })
         .then(()=> {
             alert("success");
-        })
-        .catch((err)=> {
-            alert(err);
-        });
-        liff.scanCodeV2()
+            liff.scanCodeV2()
             .then((result) => {
                 alert(result);
             })
             .catch((err)=> {
                 alert(err);
+            });
+        })
+        .catch((err)=> {
+            alert(err);
         });
     </script>
 </body>
