@@ -10,22 +10,35 @@
 <body>
     test
     <script>
-        liff.init({
-            liffId: "1656749105-wroOVO20",
-        })
-        .then(()=> {
-            alert("success");
-            liff.scanCodeV2()
-            .then((result) => {
-                alert(result);
+        window.onload = function() {
+            const defaultLiffId = "1656749105-wroOVO20";
+            initializeLiff(defaultLiffId);
+        };
+
+        function initializeLiff(defaultLiffId) {
+            liff
+            .init({
+                liffId: defaultLiffId
             })
-            .catch((err)=> {
-                alert(err);
+            .then(() => {
+                liff.scanCodeV2().then(result => {
+                    const stringifiedResult = result.value;
+                    liff.sendMessages([{
+                        'type': 'text',
+                        'text': stringifiedResult
+                    }]).then(() => {
+                        liff.closeWindow();
+                    }).catch((error) => {
+                        window.alert('Error sending message: ' + error);
+                    });
+                }).catch(err => {
+                    window.alert('scanCode failed!');
+                });
+            })
+            .catch((err) => {
+                window.alert('Something went wrong with LIFF initialization.');
             });
-        })
-        .catch((err)=> {
-            alert(err);
-        });
+            }
     </script>
 </body>
 </html>
