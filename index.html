@@ -14,8 +14,12 @@
             liffId: "1656749105-wroOVO20",
         })
         .then(()=> {
-                liff.scanCodeV2().then(result => {
+            liff.scanCodeV2()
+            .then((result) => {
                 alert(result);
+            })
+            .catch((err)=> {
+                alert(err);
             });
         })
         .catch((err)=> {
