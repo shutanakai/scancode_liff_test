@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>scan code test</title>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+    test
     <script>
-        alert(liff);
         liff.init({
             liffId: "1656749105-wroOVO20",
         })
         .then(()=> {
-            liff.scanCodeV2().then(result => {
-                alert(result);
-            });
+            alert("success");
         })
         .catch((err)=> {
             alert(err);
         });
+        liff.scanCodeV2().then(result => {
+            alert(result);
+        });
     </script>
-</head>
-<body>
-    test
 </body>
 </html>
