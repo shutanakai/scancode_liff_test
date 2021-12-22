@@ -21,6 +21,7 @@
                 liffId: defaultLiffId
             })
             .then(() => {
+                alert(liff.getDecodedIDToken());
                 liff.scanCodeV2().then(result => {
                     const stringifiedResult = result.value;
                     liff.sendMessages([{
